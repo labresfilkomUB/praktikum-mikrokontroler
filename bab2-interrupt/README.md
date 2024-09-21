@@ -29,3 +29,22 @@ D. Definisikan function `ISR()` dengan parameter untuk *interrupt* yang sedang d
 > * `INT0_vect` untuk INT0
 > * `INT1_vect` untuk INT1
 > * `INT2_vect` untuk INT2
+
+## Pemasangan Pin *Interrupt* ke Pushbutton
+
+### INT0 dan INT1
+![](../assets/bab2/int01pb01.jpeg)
+>   INT0: PD2 -> I/P SWITCH bit 0
+<br>INT1: PD3 -> I/P SWITCH bit 1
+
+### INT0 dan INT2
+![](../assets/bab2/int02pb01.jpeg)
+>   INT0: PD2 -> I/P SWITCH bit 0
+<br>INT2: PB2 -> I/P SWITCH bit 1
+
+
+### INT0, INT1, dan INT2
+![](../assets/bab2/int012pb012.jpeg)
+>   INT0: PD2 -> I/P SWITCH bit 0
+<br>INT1: PD3 -> I/P SWITCH bit 1
+<br>INT2: PB2 -> I/P SWITCH bit 2
