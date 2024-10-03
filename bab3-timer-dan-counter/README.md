@@ -46,15 +46,18 @@ E. Mendefinisikan ISR()
 
 ### 1. Mencari durasi untuk 1 tick
 Batas maksimal yang dimaksud adalah durasi Timer/Counter dalam melakukan *count* dari BOTTOM hingga MAX (sehingga kemudian kembali mencacah dari BOTTOM).
+
 $$
 \begin{aligned}
 f_{clk_{I/O}}&=\text{1 MHz} = 1.000.000 \text{ tick/detik}\\
 \text{Periode (durasi 1 tick)}&= 0,000001 \text{ detik}\\
 \end{aligned}
 $$
+
 Durasi tentunya **sangat ditentukan oleh prescaler** yang dipilih.
 
 Misalkan prescaler terpilih adalah $clk_{I/O}/64$. Counter akan melakukan 1 tick *count* setiap $clk_{I/O}$ melakukan tick sebanyak 64 kali, maka:
+
 $$
 \begin{aligned}
 \text{Durasi pertick}&= 64 \times 0,000001\\
@@ -64,6 +67,7 @@ $$
 
 ### 2. Memeriksa batas durasi maksimal (langkah opsional)
 Jika Timer/Counter berukuran 8 bit (seperti Timer/Counter0 dan Timer/Counter2), total tick dari BOTTOM hingga MAX hingga kemudian kembali lagi dari BOTTOM adalah $2^8=256$.
+
 $$
 \begin{aligned}
 \text{Durasi maksimal}&=256 \times 0,000064\\
@@ -71,7 +75,9 @@ $$
 \text{(overflow sekitar 60}&\text{ kali dalam 1 detik)}
 \end{aligned}
 $$
+
 Jika Timer/Counter berukuran 16 bit (seperti Timer/Counter1), total tick dari BOTTOM hingga MAX hingga kemudian kembali lagi dari BOTTOM adalah $2^{16}=65.536$.
+
 $$
 \begin{aligned}
 \text{Durasi maksimal}&=65536 \times 0,000064\\
@@ -81,12 +87,14 @@ $$
 
 ### 3. Mencari Jumlah Tick yang Diperlukan
 Contoh: Mengatur timer untuk memicu dalam durasi 2,5 detik
+
 $$
 \begin{aligned}
 \text{Jumlah tick diperlukan}&= \frac{3}{0,000064}\\
 &= 46.875 \text{ tick}
 \end{aligned}
 $$
+
 Jumlah tick sebanyak 46.875 dapat digunakan langsung pada Timer/Counter1 karena memiliki pencacahan maksimal sebanyak 65.536. Sedangkan pada Timer/Counter0 dan Timer/Counter2 tidak.
 
 ### 4. Menentukan Nilai Inisialisasi `TCNTn` dan `OCRn`
@@ -96,15 +104,17 @@ Pemicuan overflow hanya bergantung pada *count* yang dilakukan oleh `TCNTn`. Yai
 Karena itu, yang dapat diatur adalah inisialisasi nilai `TCNTn` saja.
 
 Nilai MAX pada Timer/Counter1 adalah 65.535.
+
 $$
 \begin{aligned}
 \text{Nilai awal pencacahan }&= 65.535 + 1 - 46.875\\
 &= 18.661
 \end{aligned}
 $$
+
 Contoh kode untuk inisialisasi nilai awal pencacahan:
 
-`TCNT1 = 18661;`{:.cpp} <br>atau<br>
+`TCNT1 = 18661;`<br>atau<br>
 `TCNT1 = 0b0100100011100101;`<br>atau<br>
 `TCNT1 = 0x48E5;`
 <br>atau
@@ -130,6 +140,7 @@ Nilai awal `TCNTn` secara default adalah 0. Oleh karena itu, nilai `OCRn` yang s
 Skenario 2: Ingin mengatur nilai awal pencacahan
 
 Misal nilai awal pencacahan menjadi 10000. Maka nilai `OCRn` adalah
+
 $$
 \begin{aligned}
 46.875 &= OCRn - nilai\_awal\_pencacahan\\
@@ -137,6 +148,7 @@ OCRn &= 46.875 + 10.000\\
 &= 56.875
 \end{aligned}
 $$
+
 Contoh kode untuk inisialisasi (menggunakan compare match A):
 ```cpp
 TCNT1 = 10000;
