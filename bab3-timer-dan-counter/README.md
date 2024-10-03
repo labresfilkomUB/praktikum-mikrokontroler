@@ -143,7 +143,7 @@ Misal nilai awal pencacahan menjadi 10000. Maka nilai `OCRn` adalah
 
 $$
 \begin{aligned}
-46.875 &= OCRn - nilai\_awal\_pencacahan\\
+46.875 &= OCRn - \text{nilai-awal-pencacahan}\\
 OCRn &= 46.875 + 10.000\\
 &= 56.875
 \end{aligned}
