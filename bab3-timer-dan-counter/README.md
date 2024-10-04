@@ -45,7 +45,6 @@ E. Mendefinisikan ISR()
 ## Contoh Pengaturan Timer
 
 ### 1. Mencari durasi untuk 1 tick
-Batas maksimal yang dimaksud adalah durasi Timer/Counter dalam melakukan *count* dari BOTTOM hingga MAX (sehingga kemudian kembali mencacah dari BOTTOM).
 
 $$
 \begin{aligned}
@@ -66,6 +65,8 @@ $$
 $$
 
 ### 2. Memeriksa batas durasi maksimal (langkah opsional)
+Batas maksimal yang dimaksud adalah durasi Timer/Counter dalam melakukan *count* dari BOTTOM hingga MAX (sehingga kemudian kembali mencacah dari BOTTOM).
+
 Jika Timer/Counter berukuran 8 bit (seperti Timer/Counter0 dan Timer/Counter2), total tick dari BOTTOM hingga MAX hingga kemudian kembali lagi dari BOTTOM adalah $2^8=256$.
 
 $$
