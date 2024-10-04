@@ -165,4 +165,4 @@ OCR1AL = 0x2B;
 
 
 #### **Catatan**
-Pada penggunaan pemicuan compare match skenario 2 dan skenario 3, pastikan untuk mengatur kembali nilai awal pencacahan di dalam program interupsi ataupun di dalam `main()` seperti pada penggunaan pemicuan overflow.
+Pada penggunaan pemicuan compare match skenario 2, pastikan untuk mengatur kembali nilai awal pencacahan di dalam program interupsi ataupun di dalam `main()` seperti pada penggunaan pemicuan overflow.
