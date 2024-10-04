@@ -87,7 +87,7 @@ $$
 $$
 
 ### 3. Mencari Jumlah Tick yang Diperlukan
-Contoh: Mengatur timer untuk memicu dalam durasi 2,5 detik
+Contoh: Mengatur timer untuk memicu dalam durasi 3 detik
 
 $$
 \begin{aligned}
