@@ -1,22 +1,26 @@
-#include <avr/io.h> 
+#include <avr/io.h>
 
-int main(void) 
+int adc_read_and_convert()
 {
-	DDRA = 0x00; 
-	PORTA = 0x00; 
-	DDRB = 0xFF;  
-	PORTB = 0xFF; 
-	
-	ADMUX |= (0<<REFS1) | (1<<REFS0); 
-	ADCSRA |= (1<<ADEN) | (1<<ADPS0) | (1<<ADPS1);
-	
-	while (1) 
-	{ 
-		ADCSRA |= (1<<ADSC); 
-		while ((ADCSRA & (1<<ADSC)) != 0); 
+	ADCSRA |= 1<<ADSC;
+	while((ADCSRA & 1<<ADSC) != 0);
+	return ADC;
+}
 
-		PORTB = ~ADC; 
-	} 
+int main(void)
+{
+	DDRA = 0x00;
+	PORTA = 0x00;
 
-    return 0;
+	DDRB = 0xFF;
+	PORTB = 0xFF;
+
+	ADMUX |= 1<<REFS0;
+	ADMUX &= ~(1<<REFS1);
+	ADCSRA |= 1<<ADEN | 1<<ADPS2 | 1<<ADPS1;
+	
+	while (1)
+	{
+		PORTB = ~adc_read_and_convert();
+	}
 }
